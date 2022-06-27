@@ -1,0 +1,21 @@
+"
+WHOAMI 
+
+Comando muito podeso que pode ser utilizado por qualquer usuario dentro do AD.
+
+whoami > por padrao somente o comando monstro o dominio\User
+
+whoami /? > Mostra todas as opções
+
+Exemplos :
+
+whoami /upn > usuario@dominio
+whoami /fqdn > mostro o fully-qualified domain name (caminho no AD)
+whoami /logonid > mostra o id de logon do user 
+whoami /user > user + SID (final 500 conta de admin)
+whoami /groups > mostra todos os grupos de usuarios que o user esta.
+whoami /priv > mostra os privilegios do usuario
+
+
+"
+

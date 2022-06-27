@@ -1,0 +1,67 @@
+** Active Directory**
+
+>>>>> Subindo AD primario
+	     - 1° Definir um IP: 
+		 		> Local Server > Interface de rede IPv4 > Propriedades > Definição de Ip Fixo.
+		 - 2° Adicionar o serviço de AD	
+		 		> Dashboard > add serviços > Active Directory Domain Services > avançar 
+	     - 3º Vamos ate o serviço do AD DS > Flag 'Promover este servidor a um controlador de dominio" >
+		 		> Se floresta nascendo do zero 'adicionar uma nova floresta' > definir nome > usuario e senha para ao ntds.dit //123!M
+				 > depois disso finalizamos a instalação > reboot
+>>>>> Acessando / Gerenciando o ADDS
+
+		Vamos em ferramentas > Active Directory Users and Computers
+		Por padrão quando criamos um AD do zero, não temos nenhuma UNIDADE ORGANIZACIONAL criada.
+		**Quando pensamos em AD, nos pensamos nesse como um grande banco de dados de objetos.
+		Usuarios, computadores, impressoras, etc... são OBJETOS.
+
+		Todo objeto, é alocado a uma UO (Unidade Organizacional)
+		Por padrão toda maquina ADDED ao dominio, cai na unidade Organizacional Computers.
+		As Unidades Organizacionais são utilizadas para a organização da infra como um todo da instituição.
+
+	*Ativando a visualização avançada.
+		Exibir > Recursos avançados. 
+		Isso vai fazer a tela e as Propriedades serem Exibidas com mais info.
+
+	*Podemos gerenciar com o Central Administrativa do Active Directory.
+		>Algumas opções só podem ser ativas por aqui, por exemplo a lixeira.
+
+>>>>> Acessando / Dominios e Relações de Confiança do AD.
+
+	Todo dominio tem uma relação de confiaça entre seus servidores/objetos.
+	Todo dominio tera uma relação de confiança com seus sub-dominios e com dominios fora da organização.
+
+Como saber qual é o controlador principal dentro da REDE ??
+	> Win + R > cmd > netdom query fsmo
+	Só funciona em controladores de dominio ou estações win10 com RSAT.
+
+>>>>>Trabalhando com Grupos de Usuarios
+	
+	Podemos criar grupos que consegue ler a alterar e outro somente para ler por exemplo.
+	
+	>>> Dentro da UO vamos da um, B direito > novo > grupo.
+
+			> Nome: Sem assento 
+			> Escopo de Grupo: 
+				*É a forma que o grupo é interpretado e replicado por toda a rede.
+				*Dominio Local: Mais restritivo
+				*Global: Padrão, funciona tudo dentro da estrutura.
+				*Universal: Tem mais abrangencia.
+
+				ps** Para alterar um escopo, é necessario converter o mesmo antes para UNIVERSAL. Config do windows. 
+			
+			Tipo de Grupo : 
+				*Segurança:Entrega permissões
+				*Distribuição: Basicamente para gerenciadores de email.
+
+	>>>Membros : Podemos ver todos os membros de um determinado grupo.
+	Podemos fazer um grupo, ser membro de outro grupo. Ou seja, somamos as permissões colocando um dentro de outro.
+	Necessario ter cuidado colocar um grupo dentro de outro.
+	A permissão precisa ser negativa para não aplicar permissões que não queiramos.
+
+	>>>Membro de : Quando queremos que o objeto seja adicionado.
+
+
+
+
+

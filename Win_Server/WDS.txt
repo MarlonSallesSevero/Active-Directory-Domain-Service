@@ -1,0 +1,9 @@
+>>> Servidor WDS
+	> Add Role e Features
+	> Windows Deployment Services (WDS)
+	> Tools > WDS > Configurar servidor ou se conectar a um
+	> Integrado ou não ao AD > *Necessario DHCP, DNS E AD DS configurados.
+	> Client Settings
+	> Ok (Serviço vem stoppado)]
+	> Vamos em Install Image > add install image > e apontamos o arquiovo ISO\sources\install.wim
+	> Vamos em imagem de inicialização> add  imagem de inicialização  > e apontamos o arquiovo ISO\sources\boot.wim

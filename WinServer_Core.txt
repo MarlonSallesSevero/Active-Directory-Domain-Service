@@ -1,0 +1,91 @@
+**Server Core**
+
+Mais seguro, mais performatico, melhor para empresas.
+
+Para validarmos as Features instaladas nesse servidor, podemos dar um :
+    Get-WindowsFeature 
+
+O Name é o nome que utilizamos para instalação, para instalarmos uma Feature, damos um:
+    Install-WindowsFeature FS-FileServer
+
+ps* set logon, mostra qual servidor esta autenticando.
+ps* APIPA, block padrao da microsoft para garantir comunicação dos dispositivos na rede. (169.254.x.y)
+ps* usuario@dominio == dominio\usuario
+
+Informação Importante :
+    Se fechar o CMD, abra o gerenciador de tarefas com Win + Shift + ESC >  ARQUIVO > NOVO > cmd /admin
+
+Desligando por linha de comando : shutdown -f -s -t 0
+
+*******Configurações Iniciais********** 
+Para isso vamos dar um sconfig > todas as configurações padrao do sistema vao aparecer de 1 - 15.
+
+1° Configurar interface rede, opção 8.
+2° Mudar Nome maquina, opção 2 
+3° Add ao Dominio, opção 1.
+
+Depois disso podemos reiniciar.
+
+*******Subindo AD replica********
+    Lembrando, vamos replicar o SRV-01(GUI) para o SRV-02(CORE), para isso iniciamos uma sessão com PSSession no SRV-01 -> SRV-02.
+
+1° Passo : Fazendo a conexão
+    New-PSSession -ComputerName "SRV-02" -Credential "popovici\administrator" 
+    Enter-PSSession -ComputerName "SRV-02"
+    hostname    
+
+2° Passo : Localizar qual serviço de instalação esta disponivel.
+    Get-WindowsFeature AD-Domain-Services | Install-WindowsFeature
+
+3° Passo : Instalação modulo responsavel pela implementação do AD na maquina.
+    Import-Module ADDSDeployment 
+
+4° Passo : Promover o SRV-02 a contralador de Dominio.
+    Install-ADDSDomainController -InstallDns -Credential (Get-Credential "popovici\administrator") -DomainName "popovici.local"
+
+5° Passo : Vamos ver a mensagem que o SRV foi promovido a controlador de dominio, e vamos colocar a senha de recuperação.
+
+6° Passo: [A] Sim para todos.
+
+7º Status : Success
+
+8° Vamos ver o sumario de replicação do SRV-01 para o SRV-02
+    repadmin /replsummary 
+
+*******Coletando Informações Pelo CMD*******
+
+* whoami /fqdn
+
+* nltest /dclist:popovici.local
+* nltest /dcgetdc:popovici.local 
+
+* nslookup -type=any %userdnsdomain%.
+
+*query user /server:SRV-01
+*query user /server:CLI-01
+
+*****MONTANDO SUB-DOMINIO REPLICA COMO CONTROLADOR*****
+-Após criação da VM do Win Server
+
+1º Definir IP fixo 
+2º Definir DNS Fixo
+3° Ingressa no Dominio
+4° Adicionar Features e Roles 
+5º ADD ADDS Services 
+6º Promovemos o servidor a controlador de dominio
+7º Vamos na opção 'Adicionar um controlador de dominio a uma floresta existente"
+8º Dominio Filio
+9º Marcar DNS
+10º Definição de Sites
+11° Após isso o sub-dominio esta criado, subordinado a floresta principal.
+
+
+****Criando AD réplica utilizando o IFM****
+
+****Subindo o RODC****
+
+****Serviços e sites do AD DS - Parte 01****
+
+****Montando um Server Router****
+
+

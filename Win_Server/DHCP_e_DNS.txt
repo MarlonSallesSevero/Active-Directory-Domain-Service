@@ -1,0 +1,32 @@
+>>> Subindo DHCP
+	-Lembrando que é necessario fazer isso offline, se nao todas maquinas da rede pegam IP
+	
+	>Vamos em adicionar role ou Features
+		1º > add a Features 'DHCP Server'
+		2º > Depois de baixado e instalado > Tools > DHCP Server 
+
+		3º >> No serviço DHCP vamos clicar em cima do servidor > autorizar servidor a distribuir endereços de rede e configs
+		4º >> Depois de autorizar os serviços IPv4 E IPv6 ficam com o check verde, de autorizados.
+		5º >> IPv4 > Novo Escopo > Escopo de Endereços > Areas de Exclusão (se houver) > finalizar config agora
+			>> Depois disso o escopo fica BAIXADO >> nesse status ainda nao fornecesse IP na rede.
+		6º >>Opções de escopo > configurar opções > cada opção de escopo tem um numero e uma config
+			>> Ex curso > add : server name, dns domain name, dns server
+		>> Ativar Escopo
+		>>A partir de agora o escopo esta funcional. 
+		
+		ps: CUIDADO!
+			>Existe as 'Opções do Servidor' e 'Opções de Escopo' 
+				Opções do Servidor : Todos os escopos pegam essa configuração
+				Opções de Escopo : Somente o escopo em questão.
+
+		Concessões ativas : Quem ta utilizando IP / Requisitou
+		Pool de Endereços : intervalo configurado no escopo
+		Reservas: Reservas de IP por mac address
+
+	--Reatribuindo Ip
+		-ipconfig /flushdns
+		-ipconfig /release
+		-ipconfig /renew
+		-ipconfig /registerdns
+
+        

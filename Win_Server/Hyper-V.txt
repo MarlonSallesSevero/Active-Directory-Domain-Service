@@ -1,0 +1,68 @@
+**Hyper-V Windows**
+
+https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/
+
+Ativar programas e Recursos > Hyper-V todos as opções
+
+**Hyper-V Windows Server**
+
+https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server
+
+Gerenciador do Servidor > Adicionar funções e recursos > intalação baseada em recurso 
+	> Seleciona o servidor > checkbox HyperV + recursos > NNF
+
+***Assim podemos transformar esse servidor em um servidor host de virtualização.
+
+**Hyper-V Documentation**
+https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview
+
+**Comutadores Virtuais ou Switches Virtuais**
+
+Estes são criados para as maquinas conseguirem conversar entre em e com a rede.
+
+Criando um comutador:
+
+	> Botao direito em cima do servidor > gerenciador de comutador virtual > Selecionar um dos 3 tipos : 
+																	- Externo : Associa a placa de rede fisica a VM. Da acesso a rede
+																	- Interno : Limita o acesso a maquina host e a LAN.
+																	- Particular: Maior nivel de isolamento, somente acesso a LAN.
+	Geralmente criamos um Particular e outro Externo
+
+**Discos diferenciais**
+Recomendado utilizar somente em ambientes de testes.
+ 
+>Utilização
+	-Apos criação do template, rodamos o sysprep para generalizar.
+	-Apos isso vamos em criação de uma nova VM, e no tipo de disco, por diferenciação.
+	-Risco: Se o disco pai se perder, a VM filha se perde. 
+
+
+	> Server Manager
+		> Dashboard
+		> Local Server
+		> All Servers
+		> Features (funções) e Role (Recursos)
+
+	>> Servidor Local 
+		
+		> Area de Trabalho remota : porta 3389
+		
+		> Gerenciamento Remoto : protocolo Win-rm, se necessario gerenciar o servidor a partir de outro
+								é possivel habilitando.
+		> Agrupamento de placa de rede (NIC) : Max de 32 placas de rede, faz balanceamento de carga, etc...
+		
+		> Servidor DNS : faz a conversão IP > nome, nome > IP
+			> DNS SEC : certificado digital, criptografia.
+		
+		> Analisador de Praticas Recomendadas : BPA
+			> Tarefas > analisar.
+			> Pode mudar o Dashboard se tiver divergencia.
+			> Cada role ou Features tem relacionado todas as informações referente a ele.
+				logo podemos configurar ela especificamente.
+
+		
+
+
+
+
+
