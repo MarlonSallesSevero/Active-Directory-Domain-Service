@@ -63,29 +63,3 @@ Depois disso podemos reiniciar.
 
 *query user /server:SRV-01
 *query user /server:CLI-01
-
-*****MONTANDO SUB-DOMINIO REPLICA COMO CONTROLADOR*****
--Após criação da VM do Win Server
-
-1º Definir IP fixo 
-2º Definir DNS Fixo
-3° Ingressa no Dominio
-4° Adicionar Features e Roles 
-5º ADD ADDS Services 
-6º Promovemos o servidor a controlador de dominio
-7º Vamos na opção 'Adicionar um controlador de dominio a uma floresta existente"
-8º Dominio Filio
-9º Marcar DNS
-10º Definição de Sites
-11° Após isso o sub-dominio esta criado, subordinado a floresta principal.
-
-
-****Criando AD réplica utilizando o IFM****
-
-****Subindo o RODC****
-
-****Serviços e sites do AD DS - Parte 01****
-
-****Montando um Server Router****
-
-
