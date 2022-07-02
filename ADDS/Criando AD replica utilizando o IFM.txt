@@ -1,0 +1,41 @@
+IFM = Install From Midia
+
+**What is the benefit of performing an IFM install of a domain controller?
+Advantages of using IFM to install a domain controller in a remote site. You can reduce 
+the replication traffic that is initiated during the installation of an additional domain controller in an Active Directory domain.**
+
+Esta opção é utilizada para grande bases ou algo assim.
+Ou quando a conectividade seja ruim
+*Nao pode ser considerado como backup
+
+**Vamos no AD principal (matriz)
+
+1° Vamos logar no servidor de Origem
+
+2° Abrir cmd com direitos administrativos 
+
+3º Entrar no pendrive destino da midia digitando a letra da unidade. E:
+
+4º Vamos criar a pasta IFM, digitando : md IFM
+
+5° Digitar : ntdsutil
+
+6° Digitar : active instance ntds
+
+7° Rodar o ifm.exe : ifm
+
+8º Digite o seguinte comando para criar a pasta da base : create sysvol full I:\IFM
+
+9° Quando precionarmos ENTER, o powershell começa o deploy da sysvol
+
+10º No servidor de DESTINO rode o wizzard de instalação do AD DS
+
+11° Sera criado 3 pastas no E:\IFM
+
+12º Após isso vamos levar a midia ate o servidor destino.
+
+13° No servidor destino vamos plugar o pendrive
+
+14º Vamos rodar o wizzard padrao de instalação do ADDS
+
+15º Na opção 'Opções adicionais' > Vamos na opção 'Especificar opções de IFM' > e marcar a opção 'Instalar Midia' >  Especificar qual sera a replica
