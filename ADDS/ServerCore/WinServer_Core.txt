@@ -51,15 +51,3 @@ Depois disso podemos reiniciar.
 
 8° Vamos ver o sumario de replicação do SRV-01 para o SRV-02
     repadmin /replsummary 
-
-*******Coletando Informações Pelo CMD*******
-
-* whoami /fqdn
-
-* nltest /dclist:popovici.local
-* nltest /dcgetdc:popovici.local 
-
-* nslookup -type=any %userdnsdomain%.
-
-*query user /server:SRV-01
-*query user /server:CLI-01

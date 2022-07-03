@@ -1,0 +1,83 @@
+https://docs.microsoft.com/pt-br/windows-server/identity/ad-ds/get-started/replication/active-directory-replication-concepts
+https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/replication/active-directory-replication-concepts#BKMK_2
+
+
+"Serviços e Sites do Active Directory"
+
+Vamos ver a importancia de orquestar/contruir toda a arquitetura de replicação de objetos no Active Directory
+Tools > Serviços e Sites do Active Directory
+
+**Quando falamos de Sites, estamos falando de uma localidade fisica. 
+
+Quando a rede começa ficar muito grande, precisamos criar sub-redes, vlans, limpando o trafego.
+Vamos ver como orquestar todos controladores de dominio no deploy 2.
+
+Podemos criar ou alterar SITES existentes.
+Por padrão o Site criado é o DEFAULT-FIRST-SITE-NAME
+Dentro desse cara, vamos ver todos os controladores de dominio e suas configurações de replicação.
+
+NTDS Settings : Configuração de Replicação 
+    *Recomendado deixa as automaticas.
+
+Nesta tela de Sites, temos a aba subnet.
+Subnets são blocos de endereços IP onde os servidores estão concentrados.
+
+Declaramos nessa tela, quais são as subredes que nosso controlador de dominio responde.
+
+Para montar uma nova, vamos em Subnets > nova subnet
+
+ex: 192.168.1.0/24
+ex: 192.168.2.0/24
+
+Lembrando que as configurações depende de um roteador que conheça as rotas.
+Ex: Cisco, Juniper
+Esta config é ideal se fazer depois das configurações de rotas da estrutura.
+
+Dessa maneira criamos uma orquestação e organizamos os endereços IPs por filiais, por localidade fisica
+Assim conseguimos validar onde o servidor busca a resposta de autenticação.
+
+Na tela de Sites em :
+
+Sites > Inter-Site Transports > IP 
+    Temos o DEFAULTSITELINK 
+Este link faz a comunicação entre os controladores de dominio.
+Cada controlador atualiza a base de informações em cima desse link.
+
+Podemos limitar a comunicação entre os sites, criando um novo LINK SITE.
+
+Validação final na replicação :
+
+repadmin /replsummary 
+
+*****O que é um site especificamente ?*****
+
+Site : Organização logica para os servidores de controle de dominio.
+
+Um site do AD representa um conjunto de servidores ou Serviços de uma empresa.
+Altamente conectados e toda a alteração que ocorrer dentro de uma desses membros do site, é replicado instantaneamente para os outros sites.
+
+Ex: Criação de usuarios 
+
+Podemos determinar qual site o controlador vai responder na promoção do mesmo.
+
+*INTRASITES*
+Processo de replicação intrasites ou seja dentro do mesmo site:
+    Componente que faz isso é o KCC.
+Gera e mantem automaticamente a topologia de replicação interna entre todos os sites.
+
+É possivel desabilitar porem nao é Recomendado.
+
+O KCC que faz a criação das conexões e configurações automaticas entre os sites.
+Ele é responsavel pelas configurações criadas entre os controladores de dominio dentro de cada site.
+Um replicação intrasite ocorre somente entre controladores de dominio dentro do mesmo site.
+E é composta por 2 processos:
+    1 - Notification : Ocorre quando qualquer controlador de dominio dentro de um site efetua uma alteração em alguma partição do AD.
+    2 - Pulley : Processo que faz o questionamento aos parceiros de replicação para saber se ocorreu alguma alteração ou nao.
+        Padrao : 1x a cada hora por padrao.
+
+*INTERSITES*
+
+Um site -> outro site 
+
+padrao: 180 minutos 
+minino: 15 minutos

@@ -1,0 +1,34 @@
+https://docs.microsoft.com/en-us/windows-server/remote/remote-access/remote-access
+
+*Montando um servidor Router para o laboratorio conseguir conversar mesmo estando com blocos de IPs diferentes.
+Essa config esta sendo feita para setar esse servidor como gateway do laboratorio.
+
+Essa VM será utilizada somente para roteamento.
+
+1º Conhecer a nome da interface nomeada no windows : netsh  interface show interface
+
+2º Setando os IPs na mesma placa rede de forma cadenciada com for : 
+    FOR /L %A IN (1,1,10) DO netsh interface ipv4 address "NOME-INTERFACE" 192.168.%A.7 255.255.255.0 
+
+3º Tambem podemos fazer essa config pelo ncpa.cpl se não forem muitos IPs na placa.
+
+4º ADD features e roles
+
+5º Remote Acess (Para utilização do RAS) e routing.
+
+6º Em Serviços e funçoes marcar a opção de roteamento.
+
+7º Após instalado > tools > Routing and Remote Acess
+
+8º Botão direito em cima do servidor > configurar e habilitar remote acess.
+
+9º Avança > Config Personalizadas > habilitar roteamento lan > iniciar serviço 
+
+10° Validar tabela de roteamento : cmd > router print
+
+11º Apontar Servidor para o gateway
+
+12º Acesso Servidor que ira se comunicar > executar > ncpa.pcl > ipV4 > gateway 192.168.A.7
+
+13º Validando se a comunicação ta chegando > cmd > arp -a
+
