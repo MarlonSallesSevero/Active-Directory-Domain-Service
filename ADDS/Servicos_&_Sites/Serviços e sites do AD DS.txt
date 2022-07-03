@@ -1,7 +1,8 @@
 https://docs.microsoft.com/pt-br/windows-server/identity/ad-ds/get-started/replication/active-directory-replication-concepts
 https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/replication/active-directory-replication-concepts#BKMK_2
-
-
+https://docs.microsoft.com/pt-br/troubleshoot/windows-server/identity/active-directory-replication-error-1256
+https://docs.microsoft.com/pt-br/troubleshoot/windows-server/identity/replication-error-1722-rpc-server-unavailable
+https://athiago.wordpress.com/2014/07/05/active-directory-entendendo-o-conceito-de-sites-e-qual-a-sua-importancia/
 "Serviços e Sites do Active Directory"
 
 Vamos ver a importancia de orquestar/contruir toda a arquitetura de replicação de objetos no Active Directory

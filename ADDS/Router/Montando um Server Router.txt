@@ -9,6 +9,7 @@ Essa VM será utilizada somente para roteamento.
 
 2º Setando os IPs na mesma placa rede de forma cadenciada com for : 
     FOR /L %A IN (1,1,10) DO netsh interface ipv4 address "NOME-INTERFACE" 192.168.%A.7 255.255.255.0 
+    https://github.com/edupopov/powershell/blob/main/ConfigEnderecosIpMultiplosServerCore
 
 3º Tambem podemos fazer essa config pelo ncpa.cpl se não forem muitos IPs na placa.
 
