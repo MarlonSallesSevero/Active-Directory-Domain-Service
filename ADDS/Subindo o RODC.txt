@@ -1,0 +1,35 @@
+https://www.windows-active-directory.com/read-only-domain-controller.html
+
+"RODC - Read only domain controller"
+
+1º Vamos rodar o wizzard padrão da feature do ADDS
+
+2º Promover o SRV a controlador de dominio
+
+3º Adicionar a um dominio existente (definição do dominio)
+
+4º Marcar a opção RODC 
+
+5º definição senha DSRM
+
+6º Configuração de permissão de acesso
+    ps: Somente administração remota por padrão
+
+7º Para um usuario conseguir fazer logon ele tem que ta no grupo ''Grupo de replicação de senha RODC''
+
+8ºControlador de att o RODC
+
+9º Finalização do processo.
+
+10º No controlador de dominio principal esse servidor vai aparecer como um controlador, com o tipo definido como GC & Read only
+
+11º *Agora vamos permitir alguns usuarios a fazer logon 
+
+12º Acesse controlador principal > Users & Computers AD > Domain Controllers > SRV RODC > botão direito > Propriedades 
+
+13º Navegue ate a aba "Diretiva de replicação de senha""
+
+14º Nesta aba realizamos a administração de acesso.
+
+15º Senhas/Users não replicados para o RODC não vão logar no SRV-RODC
+
