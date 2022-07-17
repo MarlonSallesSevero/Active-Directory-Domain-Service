@@ -1,0 +1,20 @@
+**Movendo as FSMO para outro servidor**
+
+Info : atualmente todas as FSMOs estao no SRV-01, logo ele é o primario. Vamos mover todas FSMOs para o SRV-02 transformando-o em ad primario
+da estrutura.
+
+Vamos ao servidor de "destino" para executar as ferramentas de transferencia.
+
+1º Vamos se conectar ao SRV-02
+2º ntdsutil 
+3º roles > connections > connect to domain popovici.local
+4º q 
+5º transfer(sem problemas na estrutura) & seize (sobrescreve)
+6º transfer pdc 
+7º transfer rid master 
+8º transfer naming master
+9º transfer schema master
+10º transfer infraestruture master
+11º netdom query fsmo
+12º repadmin /syncall
+
