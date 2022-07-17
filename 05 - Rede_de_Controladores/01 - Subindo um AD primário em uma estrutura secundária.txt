@@ -7,8 +7,7 @@
 4° Adicionar Features e Roles 
 5º ADD ADDS Services 
 6º Promovemos o servidor a controlador de dominio
-7º Vamos na opção 'Adicionar um controlador de dominio a uma floresta existente"
-8º Dominio Filio
-9º Marcar DNS
-10º Definição de Sites
-11° Após isso o sub-dominio esta criado, subordinado a floresta principal.
+7º Vamos na opção 'Adicionar a uma nova floresta"
+08º Definição de Sites
+09° Após isso o sub-dominio esta criado, subordinado a floresta principal.
+10º Configuração de Relacao de Confiança

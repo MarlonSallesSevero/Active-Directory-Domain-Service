@@ -1,0 +1,13 @@
+https://social.technet.microsoft.com/wiki/pt-br/contents/articles/31939.montando-relacoes-de-confianca-entre-dominios-em-servidores-windows-server-2012-r2-dica-do-mct.aspx
+
+
+**Relação de Confiança Entre duas florestas**
+
+Quando falamos de relacao de confiança estamos falando de uma conexao entre controladores de dominios. Entre dominios.
+Dominio = nomes ou seja o nome popovici.local atrelado ao endereçamento 192.168.1.1 tem que se comunicar com o bloco 192.168.6.8
+
+Como as duas florestas vao realizar a comunicação baseada em nomes, vamos precisar configurar nas duas pontas o apontamento condicional de DNS.
+Significa que sblubles.local precisa conhecer popovici.local e saber para qual servidor apontar a request.
+
+1º Tenha certeza que os 2 servidores estao ligados e se comunicando
+2º

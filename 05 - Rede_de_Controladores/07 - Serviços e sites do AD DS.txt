@@ -78,7 +78,7 @@ E é composta por 2 processos:
 
 *INTERSITES*
 
-Um site -> outro site 
+Um site ---connection>>> outro site 
 
 padrao: 180 minutos 
 minino: 15 minutos

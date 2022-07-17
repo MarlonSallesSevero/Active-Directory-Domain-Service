@@ -1,0 +1,19 @@
+
+** Montando relacao de Confiança **
+
+Aqui podemos interconectar estruturas para que ambas possam usar os itens de autenticação.
+
+ps* vamos primeiro fazer de SRV-01(popovici.local) > SRV-06(sblubles.local)
+
+1º Tools > dominios e relacao de confianca do active directory 
+2º *por padrao subdominios tem relacao de confiança com o ad primario
+3º Para realizar criar uma relacao de confianca com outro dominio, vamos clicar no dominio > botao direito > propriedades > relações de confiança
+4º Nova Relação de confiança > nome da estrutura para receber a confiança 
+5º Relação de Confiança Externa 
+6º Bidirecional
+7º Este dominio apenas
+8º autenticação em todo o dominio
+9º selecionar senha de confianca
+10º Configurar relacao de saida
+11º Confirmar a relacao de entrada.
+12º Fazer a mesma coisa do SRV-06 > SRV-01

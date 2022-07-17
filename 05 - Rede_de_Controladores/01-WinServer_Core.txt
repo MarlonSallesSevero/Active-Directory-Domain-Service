@@ -1,0 +1,27 @@
+**Server Core**
+
+Mais seguro, mais performatico, melhor para empresas.
+
+Para validarmos as Features instaladas nesse servidor, podemos dar um :
+    Get-WindowsFeature 
+
+O Name é o nome que utilizamos para instalação, para instalarmos uma Feature, damos um:
+    Install-WindowsFeature FS-FileServer
+
+ps* set logon, mostra qual servidor esta autenticando.
+ps* APIPA, block padrao da microsoft para garantir comunicação dos dispositivos na rede. (169.254.x.y)
+ps* usuario@dominio == dominio\usuario
+
+Informação Importante :
+    Se fechar o CMD, abra o gerenciador de tarefas com Win + Shift + ESC >  ARQUIVO > NOVO > cmd /admin
+
+Desligando por linha de comando : shutdown -f -s -t 0
+
+*******Configurações Iniciais********** 
+Para isso vamos dar um sconfig > todas as configurações padrao do sistema vao aparecer de 1 - 15.
+
+1° Configurar interface rede, opção 8.
+2° Mudar Nome maquina, opção 2 
+3° Add ao Dominio, opção 1.
+
+Depois disso podemos reiniciar.
